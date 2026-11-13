@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Large bioinformatics datasets and genomic references
+*.h5ad
+*.h5
+*.loom
+*.gtf
+*.gtf.gz
+*.gff
+*.gff3
+*.feather
+*.tbl
+*.csv
+*.tsv
+
+# Keep folder structure in Git while ignoring generated outputs
+references/*
+!references/.gitkeep
+
+results/*
+!results/.gitkeep
+
+# OS generated files
+.DS_Store
+Thumbs.db
