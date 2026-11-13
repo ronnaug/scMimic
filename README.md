@@ -1,8 +1,8 @@
-# MimicDetector
+# scMimic
 
-**MimicDetector** is a single-cell RNA-seq (scRNA-seq) analysis pipeline designed to detect tumor lineage plasticity, transdifferentiation, and cross-lineage phenotypic mimicry.
+**scMimic** is a single-cell RNA-seq (scRNA-seq) analysis pipeline designed to detect tumor lineage plasticity, transdifferentiation, and cross-lineage phenotypic mimicry.
 
-By integrating chromosomal copy-number variation (CNV) inference with *de novo* transcription factor (TF) regulon reconstruction and hybrid signature scoring, MimicDetector separates diploid microenvironment cells from aneuploid tumor cells adopting non-native transcriptional programs (e.g., myeloid, stromal/EMT, vasculogenic, lymphoid, neuronal, or cancer stem-like states).
+By integrating chromosomal copy-number variation (CNV) inference with *de novo* transcription factor (TF) regulon reconstruction and hybrid signature scoring, scMimic separates diploid microenvironment cells from aneuploid tumor cells adopting non-native transcriptional programs (e.g., myeloid, stromal/EMT, vasculogenic, lymphoid, neuronal, or cancer stem-like states).
 
 ---
 
@@ -18,7 +18,7 @@ By integrating chromosomal copy-number variation (CNV) inference with *de novo* 
 
 ## Reference Data Setup
 
-MimicDetector does **not** require multi-gigabyte `cisTarget` ranking databases (`.feather`) or motif tables (`.tbl`). Only two lightweight reference files are needed:
+scMimic does **not** require multi-gigabyte `cisTarget` ranking databases (`.feather`) or motif tables (`.tbl`). Only two lightweight reference files are needed:
 
 1. **GENCODE Human Gene Annotation (`gencode.v50.basic.annotation.gtf`):** Used to map gene symbols to chromosomal coordinates for `infercnvpy`.
 2. **Human Transcription Factor List (`hs_hgnc_tfs.txt`):** Plain-text list of human TF gene symbols (from Aerts Lab / pySCENIC resources).
@@ -45,7 +45,7 @@ Clone the repository and install the required dependencies:
 
 ```bash
 git clone https://github.com
-cd MimicDetector
+cd scMimic
 pip install -r requirements.txt
 ```
 
@@ -68,13 +68,13 @@ pip install -r requirements.txt
 
 ```python
 import scanpy as sc
-from mimic_detector import run_mimic_detector_pipeline
+from scMimic import run_mimic_detector_pipeline
 from visualization import plot_mimicry_results
 
 # 1. Load preprocessed (log1p-normalized) single-cell data
 adata = sc.read_h5ad("example_tumor_cohort.h5ad")
 
-# 2. Run the MimicDetector pipeline
+# 2. Run the scMimic pipeline
 adata_results = run_mimic_detector_pipeline(
     adata=adata,
     gtf_path="gencode.v50.basic.annotation.gtf",
