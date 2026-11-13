@@ -138,6 +138,12 @@ def run_mimic_detector_pipeline(
     _log(f"[INFO] Using diploid reference populations: {available_refs}")
 
     # n_jobs=1 is kept intentionally in infercnvpy to avoid duplicating large matrices in memory
+    
+    # Ensure classic numpy object indices for compatibility with Pandas 3.x / PyArrow in infercnvpy    
+    adata_res.obs_names = pd.Index(adata_res.obs_names.tolist(), dtype="object")
+    adata_res.var_names = pd.Index(adata_res.var_names.tolist(), dtype="object")
+    adata_res.var["chromosome"] = adata_res.var["chromosome"].astype(object)
+
     _log("[INFO] Running chromosomal CNV inference (infercnvpy)...")
     icnv.tl.infercnv(
         adata_res,
