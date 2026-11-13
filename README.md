@@ -44,7 +44,7 @@ wget -O hs_hgnc_tfs.txt https://github.com/aertslab/pySCENIC/blob/master/resourc
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com
+git clone https://github.com/ronnaug/scMimic
 cd scMimic
 pip install -r requirements.txt
 ```
